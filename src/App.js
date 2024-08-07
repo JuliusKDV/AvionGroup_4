@@ -1,40 +1,75 @@
+// src/App.js
 import React, { useState } from 'react';
 import './App.css';
-import logo from './logo.svg';
+import Dashboard from './Components/Dashboard/Dashboard';
+
+const users = {
+  john: {
+    role: 'admin',
+    name: 'John L. Dela Cruz',
+    password: 'john123',
+    balance: 30000,
+    accountNumber: '47290539439',
+    transactions: [
+      { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
+    ],
+  },
+  albert: {
+    role: 'user',
+    name: 'Albert L. Rivera',
+    password: 'albert123',
+    balance: 10000,
+    accountNumber: '47290539449',
+    transactions: [
+      { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
+    ],
+  },
+};
 
 function App() {
-  const [email, setEmail] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    // Handle login logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    // Check if username exists and password matches
+    if (users[username] && users[username].password === password) {
+      setLoggedIn(true);
+      setUser(users[username]);
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Login</h2>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className="App-input"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          className="App-input"
-        />
-        <button onClick={handleLogin} className="App-button">
-          Login
-        </button>
-      </header>
+      {!loggedIn ? (
+        <div className="login-container">
+          <h1 className="bank-name">XXXX BANK</h1>
+          <div className="login-box">
+            <div className="input-group">
+              <label>USER NAME</label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
+            <div className="input-group">
+              <label>PASSWORD</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button onClick={handleLogin}>LOGIN</button>
+          </div>
+        </div>
+      ) : (
+        <Dashboard user={user} />
+      )}
     </div>
   );
 }
