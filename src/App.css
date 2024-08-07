@@ -1,13 +1,13 @@
 :root {
   --dark-green: #0C3B2E;
   --medium-green: #6d9773;
-  --light-green: #a0c6a5;
+  --light-green: #c4e2c8;
   --gray: #f8f8f8;
-  --white: #ffffff;
 }
 
 * {
   font-family: 'Figtree', sans-serif;
+  color: var(--dark-green);
 }
 
 .App {
@@ -24,13 +24,13 @@
 }
 
 .bank-name {
-  color: #234029;
+  background-color: var(--light-green);
   margin-bottom: 290px;
   font-size: 35px;
 }
 
 .login-box {
-  background: #f5f3f3;
+  background: #ffffff;
   padding: 40px; 
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -68,7 +68,7 @@
 .login-box button {
   width: 100%;
   padding: 10px;
-  background-color: #234029;
+  background-color: var(--dark-green);
   color: white;
   border: none;
   border-radius: 10px;
@@ -77,71 +77,8 @@
   font-size: 17px; 
 }
 
-.login-box :hover {
-  background-color: var(--medium-green);
+.login-box button:hover {
   transition: 0.5s;
-}
-
-.dashboard {
-  display: flex;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #678f67;
-  color: white;
-  height: 100vh;
-  padding: 20px;
-}
-
-.sidebar .logo {
-  color: var(--dark-green);
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.sidebar nav ul {
-  color: var(--dark-green);
-  list-style: none;
-  font-weight: bold;
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin-bottom: 10px;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
-
-.main-content h2 {
-  color: var(--dark-green);
-}
-
-.main-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.main-content table, .main-content th, .main-content td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.main-content th {
-  background-color: #f2f2f2;
-}
-
-.main-content button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: var(--dark-green);
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: var(--medium-green);
+ 
 }
