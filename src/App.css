@@ -1,5 +1,6 @@
 :root {
   --dark-green: #0C3B2E;
+  --medium-green: #6d9773;
   --light-green: #a0c6a5;
   --gray: #f8f8f8;
   --white: #ffffff;
@@ -74,6 +75,11 @@
   cursor: pointer;
   margin-top: 10px;
   font-size: 17px; 
+}
+
+.login-box :hover {
+  background-color: var(--medium-green);
+  transition: 0.5s;
 }
 
 .dashboard {
