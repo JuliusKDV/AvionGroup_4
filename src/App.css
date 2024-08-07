@@ -1,6 +1,16 @@
+:root {
+  --dark-green: #0C3B2E;
+  --light-green: #a0c6a5;
+  --gray: #f8f8f8;
+  --white: #ffffff;
+}
+
+* {
+  font-family: 'Figtree', sans-serif;
+}
+
 .App {
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
 .login-container {
@@ -9,7 +19,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #678f67;
+  background-color: var(--light-green);
 }
 
 .bank-name {
@@ -31,7 +41,7 @@
 .login-box h1 {
   margin-bottom: 25px;
   font-size: 30px;
-  color: #234029;
+  color: var(--dark-green);
 }
 
 .input-group {
@@ -41,7 +51,7 @@
 .input-group label {
   display: block;
   margin-bottom: 5px;
-  color: #234029;
+  color: var(--dark-green);
   font-size: 20px; 
   font-weight: bold; 
   text-align: left; 
@@ -79,14 +89,14 @@
 }
 
 .sidebar .logo {
-  color: #0C3B2E;
+  color: var(--dark-green);
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 30px;
 }
 
 .sidebar nav ul {
-  color: #0C3B2E;
+  color: var(--dark-green);
   list-style: none;
   font-weight: bold;
   padding: 0;
@@ -102,7 +112,7 @@
 }
 
 .main-content h2 {
-  color: #234029;
+  color: var(--dark-green);
 }
 
 .main-content table {
@@ -123,7 +133,7 @@
 .main-content button {
   padding: 10px 20px;
   margin-right: 10px;
-  background-color: #234029;
+  background-color: var(--dark-green);
   color: white;
   border: none;
   border-radius: 5px;

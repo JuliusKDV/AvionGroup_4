@@ -1,10 +1,13 @@
 // src/components/Dashboard/Dashboard.js
 import React from 'react';
 import './Dashboard.css';
+import DateTime from '../DateTime';
 
 function Dashboard({ user }) {
   return (
     <div className="dashboard">
+
+      {/* sidebar */}
       <div className="sidebar">
         <div className="logo">Logo/ Bank Name</div>
         <nav>
@@ -39,26 +42,36 @@ function Dashboard({ user }) {
           </ul>
         </nav>
       </div>
+
       <div className="main-content">
+
         <div className="header">
-          <h2>Welcome back, {user.name}!</h2>
-          <p>August 3, 2024 12:01 pm</p>
+          <div id="headertext"><h2>Welcome back, {user.name}!</h2></div>
+          <div class="timedisplay"><DateTime /></div>
+
         </div>
+
         <div className="account-info">
-          <h3>Bank account balance as of August 3, 2024</h3>
-          <div className="info-row">
+
+          <div className="account-left">
+            <h2>Account balance </h2>
             <p>{user.name} ({user.role === 'admin' ? 'Administrator' : 'User'})</p>
-            <h2>₱{user.balance.toFixed(2)}</h2>
-          </div>
-          <p>Savings Account (Peso)</p>
+            <p>Savings Account (Peso)</p>
           <p>{user.accountNumber}</p>
-          {user.role === 'admin' && (
+          </div>
+
+          <div className="account-right">
+            <h2>₱{user.balance.toFixed(2)}</h2>
+            {user.role === 'admin' && (
             <div className="admin-actions">
               <button>Edit</button>
               <button>Delete</button>
             </div>
           )}
+          </div>
+          
         </div>
+        
         <h3>Recent transactions</h3>
         <table>
           <thead>
