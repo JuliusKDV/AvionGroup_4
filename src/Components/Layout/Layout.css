@@ -1,0 +1,11 @@
+/* outer container for the sidebar and main content */
+.page {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /* contains the main content */
+  .main-content {
+    padding: 50px;
+    flex: 1;
+  }
