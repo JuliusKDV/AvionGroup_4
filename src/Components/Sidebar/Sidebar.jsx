@@ -1,5 +1,6 @@
 import React from 'react';
-import './Sidebar.css'; 
+import './Sidebar.css';
+import { NavLink, Outlet } from 'react-router-dom';
 
 // This is a component containing the sidebar, with navigatable links
 
@@ -10,34 +11,30 @@ function Sidebar({ user }) {
       <nav>
         <ul>
           <li>
-            <a href="/">
-              <i className="fas fa-home"></i> Home
-            </a>
+            <NavLink to="/dashboard">
+              Dashboard
+            </NavLink>
           </li>
           <li>
-            <a href="/budget">
-              <i className="fas fa-wallet"></i> Budget App
-            </a>
+            <NavLink to="/budget">
+              Budget
+            </NavLink>
           </li>
           <li>
-            <a href="/transfer">
-              <i className="fas fa-exchange-alt"></i> Transfer
-            </a>
+            <NavLink to="/transfer">
+              Transfer
+            </NavLink>
           </li>
-          {user.role === 'admin' && (
+          {user?.role === 'admin' && (
             <li>
-              <a href="/admin">
-                <i className="fas fa-user-shield"></i> Administrator
-              </a>
+            
+              <NavLink to="admin">Administrator</NavLink>
+              
             </li>
           )}
-          <li>
-            <a href="/logout">
-              <i className="fas fa-sign-out-alt"></i> Log-out
-            </a>
-          </li>
         </ul>
       </nav>
+      <Outlet />
     </div>
   );
 }

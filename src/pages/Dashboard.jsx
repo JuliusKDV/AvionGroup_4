@@ -1,7 +1,7 @@
 import React from 'react';
-import './Dashboard.css';
-import DateTime from '../DateTime'; //importing the automatic time and date
-import Layout from '../Layout/Layout';
+import DateTime from '../components/DateTime'; //importing the automatic time and date
+import Layout from '../layouts/Layout';
+
 
 function Dashboard({ user }) {
   return (
