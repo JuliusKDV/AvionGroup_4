@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Components/Header'; //importing the automatic time and date
+import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
 function Dashboard({ user }) {
