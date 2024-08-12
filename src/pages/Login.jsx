@@ -1,6 +1,5 @@
-// src/App.js
-import React, { useState } from 'react';
-import Dashboard from './Dashboard';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 
 const users = {
   john: {
@@ -25,17 +24,23 @@ const users = {
   },
 };
 
-function App() {
+function Login() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // Check if username exists and password matches
     if (users[username] && users[username].password === password) {
       setLoggedIn(true);
       setUser(users[username]);
+
+      localStorage.setItem('user', JSON.stringify(user));
+      
+      navigate("/home"); //this is the redirect
     } else {
       alert('Invalid credentials');
     }
@@ -43,34 +48,30 @@ function App() {
 
   return (
     <div className="App">
-      {!loggedIn ? (
-        <div className="login-container">
-          <h1 className="bank-name">XXXX BANK</h1>
-          <div className="login-box">
-            <div className="input-group">
-              <label>USER NAME</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="input-group">
-              <label>PASSWORD</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <button onClick={handleLogin}>LOGIN</button>
+      <div className="login-container">
+        <h1 className="bank-name">XXXX BANK</h1>
+        <div className="login-box">
+          <div className="input-group">
+            <label>USER NAME</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
+          <div className="input-group">
+            <label>PASSWORD</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button onClick={handleLogin}>LOGIN</button>
         </div>
-      ) : (
-        <Dashboard user={user} />
-      )}
+      </div>
     </div>
   );
 }
 
-export default App;
+export default Login;

@@ -1,18 +1,13 @@
 import React from 'react';
-import DateTime from '../components/DateTime'; //importing the automatic time and date
+import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
-
 
 function Dashboard({ user }) {
   return (
 
     //Layout user fetches the sidebar and main content layout
     <Layout user={user}>
-      <div className="header">
-        <div id="headertext"><h2>Welcome back, {user.name}!</h2></div>
-        <div className="timedisplay"><DateTime /></div>
-      </div>
-
+      <Header></Header>
       <div className="account-info">
         <div className="account-left">
           <h2>Account balance </h2>

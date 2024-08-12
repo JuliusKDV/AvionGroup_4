@@ -27,9 +27,7 @@ function Sidebar({ user }) {
           </li>
           {user?.role === 'admin' && (
             <li>
-            
               <NavLink to="admin">Administrator</NavLink>
-              
             </li>
           )}
         </ul>

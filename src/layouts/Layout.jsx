@@ -7,11 +7,11 @@ import Sidebar from '../components/Sidebar/Sidebar.jsx';
 
 export default function Layout({ user, children }) {
   return (
-    <div class="page">
+    <div className="page">
       {/* Attaching all file components */}
       <Sidebar user={user} />
 
-      <div class="main-content">
+      <div className="main-content">
         {children}
       </div>
     </div>
