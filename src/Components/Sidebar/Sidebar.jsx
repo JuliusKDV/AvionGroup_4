@@ -7,6 +7,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 function Sidebar({ user }) {
   return (
     <div className="sidebar">
+    
       <div className="logo">Logo/ Bank Name</div>
       <nav>
         <ul>
@@ -35,7 +36,7 @@ function Sidebar({ user }) {
         </ul>
       </nav>
       <Outlet />
-    </div>
+    </div >
   );
 }
 
