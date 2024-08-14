@@ -1,5 +1,5 @@
 import React from 'react';
-import DateTime from '../components/DateTime'; //importing the automatic time and date
+import DateTime from '../Components/DateTime'; //importing the automatic time and date
 // This is a layout containing the sidebar and space for main content. 
 
 export default function Header({ user, children }) {

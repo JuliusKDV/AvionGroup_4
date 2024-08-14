@@ -3,11 +3,16 @@
   --medium-green: #6d9773;
   --light-green: #c4e2c8;
   --gray: #f8f8f8;
+  --dark-gray: #333333;
+  --border-gray: #e0e0e0;
+  --button-hover-color: #074c38;
+  --button-bg-color: #0C3B2E;
 }
 
 * {
   font-family: 'Figtree', sans-serif;
   color: var(--dark-green);
+  box-sizing: border-box;
 }
 
 .App {
@@ -81,4 +86,291 @@
   transition: 0.5s;
   background-color: var(--medium-green);
  
+}
+
+ /* welcome text and time container */
+ .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: row;
+}
+
+/* welcome text */
+#headertext {
+  color: #234029;
+  font-size: 32px;
+  text-align: left;
+  margin-top: 0px;
+}
+
+.timedisplay {
+  color: #234029;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 14px;
+  text-align: right;
+}
+
+.account-info {
+  background: #f5f5f5;
+  padding: 15px 35px 15px 35px;
+  border-radius: 10px;
+  text-align: left; 
+  font-size: 24px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.account-left {
+  margin-top: 0;
+  flex: 0.8;
+}
+
+.account-right {
+  flex: 0.2;
+}
+
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-actions button {
+  padding: 10px 20px;
+  background-color: var(--dark-green);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-content h3 {
+  color: var(--dark-green);
+  margin-top: 20px;
+  text-align: left;
+}
+
+.main-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+
+}
+
+.main-content table,
+.main-content th,
+.main-content td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.main-content th {
+  background-color: var(--gray);
+  border-top: none;
+}
+
+td:first-child, th:first-child {
+border-left: none;
+}
+
+.budget-page {
+  padding: 20px;
+  background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+}
+
+h1, h2 {
+  color: var(--dark-green);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.create-add-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+.create-budget, .add-expense {
+  flex: 1;
+  max-width: 48%;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.create-budget label, .add-expense label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+  font-size: large;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-gray);
+  border-radius: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+button {
+  background-color: var(--button-bg-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+.existing-budgets {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.budget-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.budget-item {
+  background-color: var(--gray);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-gray);
+  margin-bottom: 10px;
+  flex: 1 1 48%;
+  max-width: 48%;
+  box-sizing: border-box;
+}
+
+.budget-item h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.25rem;
+}
+
+/* Progress container to hold the bar and info */
+.progress-container {
+  position: relative;
+  margin-bottom: 20px;  /* Space below the progress bar */
+}
+
+/* Progress bar styling */
+progress {
+  width: 100%;
+  height: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Positioning the amount info */
+.progress-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.amount-spent {
+  position: absolute;
+  bottom: -40px;  /* Positioning the spent amount below the progress bar */
+  left: 0;
+}
+
+.amount-budgeted {
+  position: absolute;
+  top: -20px;  /* Positioning the budgeted amount above the progress bar */
+  right: 0;
+}
+
+.amount-remaining {
+  position: absolute;
+  bottom: -40px;  /* Positioning the remaining amount below the progress bar */
+  right: 0;
+}
+
+.budget-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--dark-gray);
+}
+
+.expenses-list, .recent-expenses {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-gray);
+  border-radius: 10px;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.expenses-list table, .recent-expenses table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expenses-list th, .recent-expenses th {
+  background-color: var(--gray);
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.expenses-list td, .recent-expenses td {
+  padding: 10px;
+  background-color: white;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.expenses-list td:last-child, .recent-expenses td:last-child {
+  text-align: center;
+}
+
+.expenses-list .expense-item button, .recent-expenses .recent-expense-item button {
+  background-color: var(--button-bg-color);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.expenses-list .expense-item button:hover, .recent-expenses .recent-expense-item button:hover {
+  background-color: var(--button-hover-color);
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Layout.css';
 
-import Sidebar from '../components/Sidebar/Sidebar.jsx';
+import Sidebar from '../Components/Sidebar/Sidebar.jsx';
 
 // This is a layout containing the sidebar and space for main content. 
 
