@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 const users = {
@@ -32,19 +32,20 @@ function Login() {
 
   const navigate = useNavigate();
 
+
   const handleLogin = () => {
     // Check if username exists and password matches
     if (users[username] && users[username].password === password) {
+      const loggedInUser = users[username];
       setLoggedIn(true);
-      setUser(users[username]);
-
-      localStorage.setItem('user', JSON.stringify(user));
-      
-      navigate("/home"); //this is the redirect
+      setUser(loggedInUser);
+      localStorage.setItem('user', JSON.stringify(loggedInUser)); // Store user in local storage
+      navigate("/dashboard");
     } else {
       alert('Invalid credentials');
     }
   };
+
 
   return (
     <div className="App">

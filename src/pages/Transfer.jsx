@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
 function Transfer({ user }) {
   return (
     <div>
       <Layout user={user}>
-        <h1>Transfer Page</h1>
+        <Header>Transfer Page</Header>
       </Layout>
     </div>
   );

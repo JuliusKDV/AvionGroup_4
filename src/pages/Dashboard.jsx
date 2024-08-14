@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
-function Dashboard({ user }) {
+function Dashboard() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    // Fetch the user from localStorage
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
+
 
     //Layout user fetches the sidebar and main content layout
     <Layout user={user}>
-      <Header></Header>
+      <Header>Welcome back!</Header>
       <div className="account-info">
         <div className="account-left">
           <h2>Account balance </h2>
