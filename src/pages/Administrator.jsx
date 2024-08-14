@@ -1,11 +1,12 @@
 import React from 'react';
+import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
 function Administrator({ user }) {
   return (
     <div>
       <Layout user={user}>
-        <h1>Admin Page</h1>
+        <Header>Admin page</Header>
       </Layout>
     </div>
   );

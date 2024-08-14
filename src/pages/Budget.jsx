@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Header from '../components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
-function Budget() {
+function Budget({user}) {
   const [budgets, setBudgets] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [budgetName, setBudgetName] = useState('');
@@ -62,7 +63,7 @@ function Budget() {
   };
 
   return (
-    <Layout>
+    <Layout user ={user}>
       <div className="budget-page">
         <h1>Budget Page</h1>
         

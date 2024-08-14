@@ -11,7 +11,7 @@ export default function Header({ user, children }) {
         {children} 
       </h2>
       </div>
-    {/* <div className="timedisplay"><DateTime /></div> */}
+    <div className="timedisplay"><DateTime /></div>
   </div>
   );
 }
