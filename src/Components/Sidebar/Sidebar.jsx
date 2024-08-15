@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Sidebar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouseUser, faPiggyBank, faMoneyBillTransfer, faUserTie, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHouseUser, faPiggyBank, faMoneyBillTransfer, faUserTie, faRightFromBracket, faBuildingColumns } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar({ user }) {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function Sidebar({ user }) {
 
   return (
     <div className="sidebar">
-      <div className="logo">Logo/Bank Name</div>
+      <div className="logo"><FontAwesomeIcon icon={faBuildingColumns} className='side-icon'/>PhilBank</div>
       <nav>
         <ul>
           <li>
