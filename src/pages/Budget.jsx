@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header'; //importing the automatic time and date
+import Header from '../Cnpm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-iconsomponents/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
 function Budget({user}) {
