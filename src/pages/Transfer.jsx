@@ -10,16 +10,7 @@ function Transfer({ user }) {
 
     <Layout user={user}>
       <Header>Transfer Page</Header>
-      <div className="transfer">
-        <div className="transfer-options"> 
-          <FontAwesomeIcon icon={faMoneyBillTransfer} size="6x" />
-          <h2>Internal transfer</h2>
-          </div>
-        <div className="transfer-options"> 
-          <FontAwesomeIcon icon={faMagnifyingGlassDollar} size="6x" />
-          <h2>External transfer</h2>
-        </div>
-      </div>
+      
     </Layout>
 
   );
