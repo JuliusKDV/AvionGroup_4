@@ -64,8 +64,9 @@ function Budget({user}) {
 
   return (
     <Layout user ={user}>
+       <Header>Budget Page</Header>
       <div className="budget-page">
-        <h1>Budget Page</h1>
+       
         
         {/* Create and Add Expense Sections */}
         <div className="create-add-container">

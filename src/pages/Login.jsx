@@ -1,51 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const users = {
-  john: {
-    role: 'admin',
-    name: 'John L. Dela Cruz',
-    password: 'john123',
-    balance: 30000,
-    accountNumber: '47290539439',
-    transactions: [
-      { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
-    ],
-  },
-  albert: {
-    role: 'user',
-    name: 'Albert L. Rivera',
-    password: 'albert123',
-    balance: 10000,
-    accountNumber: '47290539449',
-    transactions: [
-      { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
-    ],
-  },
-};
-
-function Login() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+function Login({ onLogin, users }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
-
 
   const handleLogin = () => {
     // Check if username exists and password matches
     if (users[username] && users[username].password === password) {
       const loggedInUser = users[username];
-      setLoggedIn(true);
-      setUser(loggedInUser);
-      localStorage.setItem('user', JSON.stringify(loggedInUser)); // Store user in local storage
+      onLogin(loggedInUser); // Call the onLogin function passed from App.js
       navigate("/dashboard");
     } else {
       alert('Invalid credentials');
     }
   };
-
 
   return (
     <div className="App">

@@ -5,8 +5,6 @@
   --gray: #f8f8f8;
   --dark-gray: #333333;
   --border-gray: #e0e0e0;
-  --button-hover-color: #074c38;
-  --button-bg-color: #0C3B2E;
 }
 
 * {
@@ -146,12 +144,12 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+/* 
 .main-content h3 {
   color: var(--dark-green);
   margin-top: 20px;
   text-align: left;
-}
+} */
 
 .main-content table {
   width: 100%;
@@ -185,11 +183,6 @@ border-left: none;
   align-items: flex-start; /* Align content to the left */
 }
 
-h1, h2 {
-  color: var(--dark-green);
-  margin-bottom: 20px;
-  text-align: left;
-}
 
 .create-add-container {
   display: flex;
@@ -232,7 +225,7 @@ input, select {
 }
 
 button {
-  background-color: var(--button-bg-color);
+  background-color: var(--dark-green);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -242,7 +235,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--medium-green);
 }
 
 .existing-budgets {
@@ -362,7 +355,7 @@ progress {
 }
 
 .expenses-list .expense-item button, .recent-expenses .recent-expense-item button {
-  background-color: var(--button-bg-color);
+  background-color: var(--dark-green);
   color: white;
   border-radius: 5px;
   padding: 5px 10px;
@@ -371,5 +364,29 @@ progress {
 }
 
 .expenses-list .expense-item button:hover, .recent-expenses .recent-expense-item button:hover {
-  background-color: var(--button-hover-color);
+  background-color: var(--medium-green);
+}
+
+.transfer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap: 2%;
+  justify-content: center;
+} 
+
+.transfer-options {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.transfer-options:hover * {
+  transition: 0.5s;
+  color: var(--medium-green);
 }

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import './Sidebar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouseUser, faPiggyBank, faMoneyBillTransfer, faUserTie, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar({ user }) {
   const navigate = useNavigate();
@@ -19,22 +21,22 @@ function Sidebar({ user }) {
       <nav>
         <ul>
           <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/dashboard"><FontAwesomeIcon icon={faHouseUser} className='side-icon'/> Dashboard</NavLink>
           </li>
           <li>
-            <NavLink to="/budget">Budget</NavLink>
+            <NavLink to="/budget"><FontAwesomeIcon icon={faPiggyBank} className="side-icon"/>Budget</NavLink>
           </li>
           <li>
-            <NavLink to="/transfer">Transfer</NavLink>
+            <NavLink to="/transfer"><FontAwesomeIcon icon={faMoneyBillTransfer} className="side-icon" /> Transfer</NavLink>
           </li>
           {user?.role === 'admin' && (
             <li>
-              <NavLink to="/admin">Administrator</NavLink>
+              <NavLink to="/admin"> <FontAwesomeIcon icon={faUserTie} className="side-icon" />Administrator</NavLink>
             </li>
           )}
           <li>
             <a href="/" onClick={handleLogout} className="logout-link">
-              Logout
+            <FontAwesomeIcon icon={faRightFromBracket} className="side-icon" /> Logout
             </a>
           </li>
         </ul>
