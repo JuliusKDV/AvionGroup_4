@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Header from '../components/Header'; //importing the automatic time and date
+import Header from '../Components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
 function Home({ user }) {

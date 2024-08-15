@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import Header from '../Components/Header';
 import Layout from '../layouts/Layout';
 
 function Administrator({ user, users, onAddUser }) {
