@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faBuildingColumns } from '@fortawesome/free-solid-svg-icons';
 
 function Login({ onLogin, users }) {
   const [username, setUsername] = useState('');
@@ -20,7 +22,7 @@ function Login({ onLogin, users }) {
   return (
     <div className="App">
       <div className="login-container">
-        <h1 className="bank-name">XXXX BANK</h1>
+        <h1 className="bank-name"><FontAwesomeIcon icon={faBuildingColumns} />  PhilBank</h1>
         <div className="login-box">
           <div className="input-group">
             <label>USER NAME</label>
