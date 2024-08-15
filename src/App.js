@@ -32,7 +32,6 @@ const users = {
   },
 };
 
-
 function App() {
   const [user, setUser] = useState(null);
 
@@ -49,8 +48,6 @@ function App() {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
   };
-
- 
 
   return (
     <BrowserRouter>
