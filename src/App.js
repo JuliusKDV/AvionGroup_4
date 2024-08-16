@@ -24,6 +24,15 @@ function App() {
         { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
       ],
     },
+    'alba@email.com': {
+      role: 'user',
+      name: 'Alba Tan',
+      balance: 5200,
+      accountNumber: '47290523943',
+      transactions: [
+        { date: '08/12/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 50000 },
+      ],
+    },
     'albert@email.com': {
       role: 'user',
       name: 'Albert L. Rivera',
@@ -60,14 +69,16 @@ function App() {
     }));
   };
 
-  const addBalance = (key) => {
+  const addBalance = (key, isAddition) => {
     const inputValue = parseFloat(inputValues[key]);
     if (!isNaN(inputValue)) {
       setUsers(prevUsers => ({
         ...prevUsers,
         [key]: {
           ...prevUsers[key],
-          balance: prevUsers[key].balance + inputValue,
+          balance: isAddition
+            ? prevUsers[key].balance + inputValue
+            : prevUsers[key].balance - inputValue, // Subtract if isAddition is false
         },
       }));
       setInputValues(prevValues => ({
@@ -76,6 +87,7 @@ function App() {
       }));
     }
   };
+  
 
   const handleInputChange = (event, key) => {
     const { value } = event.target;
@@ -91,7 +103,7 @@ function App() {
         <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} users={users} />} />
         <Route path="dashboard" element={<Dashboard user={user} />} />
         <Route path="budget" element={<Budget user={user} />} />
-        <Route path="transfer" element={<Transfer user={user} />} />
+        <Route path="transfer" element={<Transfer user={user} users={users} setUsers={setUsers} />} />
         <Route 
           path="admin" 
           element={

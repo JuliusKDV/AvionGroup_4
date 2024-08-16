@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Header from '../Components/Header'; // Importing the automatic time and date
+import Header from '../Components/Header'; 
 import Layout from '../layouts/Layout';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBillTransfer, faMagnifyingGlassDollar } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
-function Transfer({ user }) {
+function Transfer({ user, users, setUsers }) { // Now includes setUsers prop
   const [fromAccount, setFromAccount] = useState('');
   const [toAccount, setToAccount] = useState('');
   const [amount, setAmount] = useState('');
@@ -12,13 +12,34 @@ function Transfer({ user }) {
 
   const handleTransfer = (e) => {
     e.preventDefault();
-    // Add logic to handle the transfer
-    console.log('Transfer details:', {
-      fromAccount,
-      toAccount,
-      amount,
-      description,
-    });
+
+    // Parse the amount as a float
+    const transferAmount = parseFloat(amount);
+
+    // Find the users corresponding to the fromAccount and toAccount
+    const fromUserKey = Object.keys(users).find(key => users[key].accountNumber === fromAccount);
+    const toUserKey = Object.keys(users).find(key => users[key].accountNumber === toAccount);
+
+    // Perform the transfer by updating the user balances
+    setUsers(prevUsers => ({
+      ...prevUsers,
+      [fromUserKey]: {
+        ...prevUsers[fromUserKey],
+        balance: prevUsers[fromUserKey].balance - transferAmount,
+      },
+      [toUserKey]: {
+        ...prevUsers[toUserKey],
+        balance: prevUsers[toUserKey].balance + transferAmount,
+      },
+    }));
+
+    // Reset form fields (optional)
+    setFromAccount('');
+    setToAccount('');
+    setAmount('');
+    setDescription('');
+
+    console.log('Transfer completed');
   };
 
   return (
@@ -30,26 +51,36 @@ function Transfer({ user }) {
         <form onSubmit={handleTransfer}>
           <div className="form-group">
             <label htmlFor="fromAccount">From Account</label>
-            <input
-              type="text"
+            <select
               id="fromAccount"
               value={fromAccount}
               onChange={(e) => setFromAccount(e.target.value)}
-              placeholder="Enter your account number"
               required
-            />
+            >
+              <option value="" disabled>Select your account</option>
+              {Object.keys(users).map((key) => (
+                <option key={key} value={users[key].accountNumber}>
+                  {users[key].name} - ₱{users[key].balance.toLocaleString()}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="form-group">
             <label htmlFor="toAccount">To Account</label>
-            <input
-              type="text"
+            <select
               id="toAccount"
               value={toAccount}
               onChange={(e) => setToAccount(e.target.value)}
-              placeholder="Enter recipient's account number"
               required
-            />
+            >
+              <option value="" disabled>Select recipient's account</option>
+              {Object.keys(users).map((key) => (
+                <option key={key} value={users[key].accountNumber}>
+                  {users[key].name} - ₱{users[key].balance.toLocaleString()}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="form-group">
@@ -64,22 +95,11 @@ function Transfer({ user }) {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter a description"
-            />
-          </div>
-
           <button type="submit" className="btn btn-primary">
-            <FontAwesomeIcon icon={faMoneyBillTransfer} /> Transfer Money
+          Transfer Money
           </button>
         </form>
       </div>
-
     </Layout>
   );
 }

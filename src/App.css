@@ -363,6 +363,10 @@ progress {
 
 
 /*Transfer page */
+.transfer-container {
+  width: 50%;
+}
+
 .transfer {
   display: flex;
   flex-direction: row;
