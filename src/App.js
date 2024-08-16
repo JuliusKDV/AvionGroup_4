@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
 import Budget from './pages/Budget';
 import Administrator from './pages/Administrator';
 import Add from './pages/Add';
 import Transfer from './pages/Transfer';
-import Deposit from './pages/Deposit';
-
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [inputValues, setInputValues] = useState({}); // Move this here
 
   const [users, setUsers] = useState({
     'john@email.com': {
@@ -62,17 +60,51 @@ function App() {
     }));
   };
 
+  const addBalance = (key) => {
+    const inputValue = parseFloat(inputValues[key]);
+    if (!isNaN(inputValue)) {
+      setUsers(prevUsers => ({
+        ...prevUsers,
+        [key]: {
+          ...prevUsers[key],
+          balance: prevUsers[key].balance + inputValue,
+        },
+      }));
+      setInputValues(prevValues => ({
+        ...prevValues,
+        [key]: '',
+      }));
+    }
+  };
+
+  const handleInputChange = (event, key) => {
+    const { value } = event.target;
+    setInputValues({
+      ...inputValues,
+      [key]: value,
+    });
+  };
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} users={users} />} />
-        <Route path="home" element={<Home user={user} />} />
         <Route path="dashboard" element={<Dashboard user={user} />} />
-        <Route path="budget" element={<Budget user={user}  />} />
+        <Route path="budget" element={<Budget user={user} />} />
         <Route path="transfer" element={<Transfer user={user} />} />
-        <Route path="deposit" element={<Deposit user={user} />} />
-        <Route path="admin" element={<Administrator user={user} users={users}  />} />
-        <Route path="add" element={<Add user={user}  onAddUser={handleAddUser} />} />
+        <Route 
+          path="admin" 
+          element={
+            <Administrator 
+              user={user} 
+              users={users} 
+              addBalance={addBalance} 
+              handleInputChange={handleInputChange} 
+              inputValues={inputValues} 
+            />
+          } 
+        />
+        <Route path="add" element={<Add user={user} onAddUser={handleAddUser} />} />
       </Routes>
     </BrowserRouter>
   );

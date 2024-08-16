@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Sidebar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,9 +28,6 @@ function Sidebar({ user }) {
           </li>
           <li>
             <NavLink to="/transfer"><FontAwesomeIcon icon={faMoneyBillTransfer} className="side-icon" /> Transfer</NavLink>
-          </li>
-          <li>
-            <NavLink to="/deposit"><FontAwesomeIcon icon={faMoneyBillTransfer} className="side-icon" /> Deposit</NavLink>
           </li>
           {user?.role === 'admin' && (
             <div>

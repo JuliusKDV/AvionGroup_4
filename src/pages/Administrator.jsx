@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../Components/Header';
 import Layout from '../layouts/Layout';
 
-function Administrator({ user, users }) {
-  
+function Administrator({ user, users, addBalance, handleInputChange, inputValues }) {
 
   return (
     <div>
@@ -16,6 +15,7 @@ function Administrator({ user, users }) {
               <th>Name</th>
               <th>Account Number</th>
               <th>Balance</th>
+              <th>Add/Subtract Balance</th>
             </tr>
           </thead>
           <tbody>
@@ -23,7 +23,16 @@ function Administrator({ user, users }) {
               <tr key={key}>
                 <td>{users[key].name}</td>
                 <td>{users[key].accountNumber}</td>
-                <td>₱{users[key].balance.toFixed(2)}</td>
+                <td>₱{users[key].balance.toFixed(2).toLocaleString()}</td>
+                <td className='plusminus'>
+                <button onClick={() => addBalance(key, true)}>+</button>
+                  <input
+                    type="number"
+                    value={inputValues[key] || ''}
+                    onChange={(event) => handleInputChange(event, key)}
+                  />
+                  <button onClick={() => addBalance(key, false)}>-</button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -34,4 +43,3 @@ function Administrator({ user, users }) {
 }
 
 export default Administrator;
-

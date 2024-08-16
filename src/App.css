@@ -144,12 +144,6 @@
   border-radius: 5px;
   cursor: pointer;
 }
-/* 
-.main-content h3 {
-  color: var(--dark-green);
-  margin-top: 20px;
-  text-align: left;
-} */
 
 .main-content table {
   width: 100%;
@@ -367,6 +361,8 @@ progress {
   background-color: var(--medium-green);
 }
 
+
+/*Transfer page */
 .transfer {
   display: flex;
   flex-direction: row;
@@ -379,7 +375,7 @@ progress {
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+ 
   width: 100%;
   aspect-ratio: 3/2;
   border-radius: 10px;
@@ -389,4 +385,21 @@ progress {
 .transfer-options:hover * {
   transition: 0.5s;
   color: var(--medium-green);
+}
+
+
+.plusminus {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+
+.plusminus input {
+ padding: 0;
+ margin-top:12px;
+ line-height: 32px;
+}
+
+.plusminus button {
+height: 100%;
 }
