@@ -30,7 +30,7 @@ function Dashboard() {
           <p>{user.accountNumber}</p>
         </div>
         <div className="account-right">
-          <h2>₱{user.balance.toFixed(2)}</h2>
+          <h2>₱{user.balance.toLocaleString()}</h2>
           {user.role === 'admin' && (
             <div className="admin-actions">
               <button>Edit</button>
