@@ -33,51 +33,51 @@ function Add({ user, onAddUser }) {
     <div>
       <Layout user={user}>
         <Header>Add a new user</Header>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            value={newUser.name}
-            onChange={handleInputChange}
-            placeholder="Full name"
-            required
-          />
-           <input
-            type="text"
-            name="email"
-            value={newUser.email}
-            onChange={handleInputChange}
-            placeholder="Name"
-            required
-          />
-          <input
-            type="text"
-            name="password"
-            value={newUser.password}
-            onChange={handleInputChange}
-            placeholder="Password"
-            required
-          />
-          <input
-            type="number"
-            name="balance"
-            value={newUser.balance}
-            onChange={handleInputChange}
-            placeholder="Balance"
-            required
-          />
-          <input
-            type="text"
-            name="accountNumber"
-            value={newUser.accountNumber}
-            onChange={handleInputChange}
-            placeholder="Account Number"
-            required
-          />
-          <button type="submit">Add User</button>
-        </form>
-       
+        <div className="transfer-container">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              value={newUser.name}
+              onChange={handleInputChange}
+              placeholder="Full name"
+              required
+            />
+            <input
+              type="text"
+              name="email"
+              value={newUser.email}
+              onChange={handleInputChange}
+              placeholder="Name"
+              required
+            />
+            <input
+              type="text"
+              name="password"
+              value={newUser.password}
+              onChange={handleInputChange}
+              placeholder="Password"
+              required
+            />
+            <input
+              type="number"
+              name="balance"
+              value={newUser.balance}
+              onChange={handleInputChange}
+              placeholder="Balance"
+              required
+            />
+            <input
+              type="text"
+              name="accountNumber"
+              value={newUser.accountNumber}
+              onChange={handleInputChange}
+              placeholder="Account Number"
+              required
+            />
+            <button type="submit">Add User</button>
+          </form>
+        </div>
       </Layout>
     </div>
   );
