@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
-function Dashboard() {
+function Dashboard({users}) {
+  
   const [user, setUser] = useState(null);
   useEffect(() => {
     // Fetch the user from localStorage
@@ -15,10 +16,12 @@ function Dashboard() {
   if (!user) {
     return <div>Loading...</div>;
   }
+  const balance = users[user.email].balance;
+
+  console.log('User:', user); // Log the user object
+  console.log('Test', balance); // Log the entire users object
 
   return (
-
-
     //Layout user fetches the sidebar and main content layout
     <Layout user={user}>
       <Header>Welcome back!</Header>
@@ -30,7 +33,7 @@ function Dashboard() {
           <p>{user.accountNumber}</p>
         </div>
         <div className="account-right">
-          <h2>₱{user.balance.toLocaleString()}</h2>
+          <h2>₱{balance.toLocaleString()}</h2>
           {user.role === 'admin' && (
             <div className="admin-actions">
               <button>Edit</button>

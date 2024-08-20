@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../Components/Header'; //importing the automatic time and date
 import Layout from '../layouts/Layout';
 
-function Budget({user}) {
+function Budget({user, addbalance}) {
   const [budgets, setBudgets] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [budgetName, setBudgetName] = useState('');
@@ -12,6 +12,7 @@ function Budget({user}) {
   const [selectedBudget, setSelectedBudget] = useState(null);
 
   const createBudget = () => {
+    
     const newBudget = {
       name: budgetName,
       amount: parseFloat(budgetAmount),

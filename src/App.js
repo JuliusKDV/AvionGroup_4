@@ -7,44 +7,13 @@ import Administrator from './pages/Administrator';
 import Add from './pages/Add';
 import Transfer from './pages/Transfer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import usersData from './assets/users.json';
 
 function App() {
   const [user, setUser] = useState(null);
   const [inputValues, setInputValues] = useState({}); // Move this here
-
-  const [users, setUsers] = useState({
-    'john@email.com': {
-      role: 'admin',
-      name: 'John L. Dela Cruz',
-      email: 'john@email.com',
-      password: 'john123',
-      balance: 30000,
-      accountNumber: '47290539439',
-      transactions: [
-        { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
-      ],
-    },
-    'alba@email.com': {
-      role: 'user',
-      name: 'Alba Tan',
-      balance: 5200,
-      accountNumber: '47290523943',
-      transactions: [
-        { date: '08/12/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 50000 },
-      ],
-    },
-    'albert@email.com': {
-      role: 'user',
-      name: 'Albert L. Rivera',
-      email: 'albert@email.com',
-      password: 'albert123',
-      balance: 10000,
-      accountNumber: '47290539449',
-      transactions: [
-        { date: '08/02/2024', name: 'Mark L. Ocampo', transaction: 'External Transfer', amount: 20000 },
-      ],
-    },
-  });
+  const [users, setUsers] = useState(usersData); 
+  
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -81,6 +50,8 @@ function App() {
             : prevUsers[key].balance - inputValue, // Subtract if isAddition is false
         },
       }));
+
+      
       setInputValues(prevValues => ({
         ...prevValues,
         [key]: '',
@@ -88,7 +59,6 @@ function App() {
     }
   };
   
-
   const handleInputChange = (event, key) => {
     const { value } = event.target;
     setInputValues({
@@ -101,7 +71,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} users={users} />} />
-        <Route path="dashboard" element={<Dashboard user={user} />} />
+        <Route path="dashboard" element={<Dashboard user={user} users={users}/>} />
         <Route path="budget" element={<Budget user={user} />} />
         <Route path="transfer" element={<Transfer user={user} users={users} setUsers={setUsers} />} />
         <Route 
